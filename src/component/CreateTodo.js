@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class CreateTodo extends Component {
   state = {
-    task: ''
+    task: '',
   };
 
   render() {
@@ -24,7 +24,7 @@ class CreateTodo extends Component {
             this.setState({ task: '' });
           }}
         >
-          Create
+          Add
         </button>
       </div>
     );

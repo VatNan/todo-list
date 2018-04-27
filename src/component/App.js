@@ -63,10 +63,7 @@ class App extends React.Component {
 
   deleteTodo(indexDelete) {
     const { todos } = this.state;
-    alert(55555)
-    const newTodos = todos.filter((todo, index) => {
-      return index !== indexDelete;
-    });
+    const newTodos = todos.filter((todo, index) => index !== indexDelete);
 
     this.setState({
       todos: newTodos,
@@ -78,7 +75,6 @@ class App extends React.Component {
   
     return (
       <div>
-        <h1>Todo List</h1>
         <CreateTodo
           createTodo={(task) => { this.createTodo(task); }}
         />

@@ -17,7 +17,7 @@ class TodoItem extends Component {
 
   editMode(mode) {
     this.setState({
-      mode
+      mode,
     });
   }
 

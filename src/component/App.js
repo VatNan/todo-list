@@ -29,11 +29,11 @@ class App extends React.Component {
         return {
           ...todo,
           isComplete: !todo.isComplete,
-        }
+        };
       }
 
       // not match
-      return  todo
+      return  todo;
     });
 
     this.setState({
@@ -49,11 +49,11 @@ class App extends React.Component {
         return {
           ...todo,
           task: newTask,
-        }
+        };
       }
 
       // not match
-      return  todo
+      return  todo;
     });
 
     this.setState({

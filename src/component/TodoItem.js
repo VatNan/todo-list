@@ -6,6 +6,11 @@ const MODE = {
   SHOW: 'show',
 };
 
+const COLOR = {
+  BLACK: '#000000',
+  GREEN: '#00ff00',
+}
+
 class TodoItem extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +20,7 @@ class TodoItem extends Component {
     };
   }
 
-  editMode(mode) {
+  editMode = (mode) => {
     this.setState({
       mode,
     });
@@ -41,7 +46,7 @@ class TodoItem extends Component {
                   onClick={() => {
                     toggleTodo(index);
                   }}
-                  style={{ color: (todo.isComplete) ? 'black': 'green'  }}
+                  style={{ color: (todo.isComplete) ? COLOR.BLACK : COLOR.GREEN }}
                 >
                   {todo.task}
                 </label>

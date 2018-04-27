@@ -19,15 +19,9 @@ class TodoList extends Component {
               key={index}
               todo={todo}
               index={index}
-              toggleTodo={(indexToggle) => {
-                toggleTodo(indexToggle);
-              }}
-              updateTodo={(indexUpdate, newTask) => {
-                updateTodo(indexUpdate, newTask);
-              }}
-              deleteTodo={(indexDelete) => {
-                deleteTodo(indexDelete);
-              }}
+              toggleTodo={toggleTodo}
+              updateTodo={updateTodo}
+              deleteTodo={deleteTodo}
             />
           ))
         }

@@ -9,7 +9,7 @@ class App extends React.Component {
     ],
   };
 
-  createTodo(task) {
+  createTodo = (task) => {
     const { todos } = this.state;
     const newTodos = [
       ...todos,
@@ -21,7 +21,7 @@ class App extends React.Component {
     });
   }
 
-  toggleTodo(indexToggle) {
+  toggleTodo = (indexToggle) => {
     const { todos } = this.state;
     const newTodos = todos.map((todo, index) => {
       // match
@@ -41,7 +41,7 @@ class App extends React.Component {
     });
   }
 
-  updateTodo(indexUpdate, newTask) {
+  updateTodo = (indexUpdate, newTask) => {
     const { todos } = this.state;
     const newTodos = todos.map((todo, index) => {
       // match
@@ -61,7 +61,7 @@ class App extends React.Component {
     });
   }
 
-  deleteTodo(indexDelete) {
+  deleteTodo = (indexDelete) => {
     const { todos } = this.state;
     const newTodos = todos.filter((todo, index) => index !== indexDelete);
 
@@ -76,20 +76,14 @@ class App extends React.Component {
     return (
       <div>
         <CreateTodo
-          createTodo={(task) => { this.createTodo(task); }}
+          createTodo={this.createTodo}
         />
         <br />
         <TodoList
           todos={todos}
-          toggleTodo={(indexToggle) => {
-            this.toggleTodo(indexToggle);
-          }}
-          updateTodo={(indexUpdate, newTask) => {
-            this.updateTodo(indexUpdate, newTask)
-          }}
-          deleteTodo={(indexDelete) => {
-            this.deleteTodo(indexDelete);
-          }}
+          toggleTodo={this.toggleTodo}
+          updateTodo={this.updateTodo}
+          deleteTodo={this.deleteTodo}
         />
       </div>
     )

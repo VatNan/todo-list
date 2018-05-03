@@ -31,7 +31,7 @@ class TodoItem extends Component {
     const {
       todo,
       toggleTodo,
-      index,
+      id,
       updateTodo,
       deleteTodo,
     } = this.props;
@@ -44,7 +44,7 @@ class TodoItem extends Component {
               <div>
                 <label
                   onClick={() => {
-                    toggleTodo(index);
+                    toggleTodo(id);
                   }}
                   style={{ color: (todo.isComplete) ? COLOR.BLACK : COLOR.GREEN }}
                 >
@@ -60,7 +60,7 @@ class TodoItem extends Component {
                 </button>
                 <button
                   onClick={() => {
-                    deleteTodo(index);
+                    deleteTodo(id);
                   }}
                 >
                   Delete
@@ -74,7 +74,7 @@ class TodoItem extends Component {
                   onChange={(e) => { this.setState({ task: e.target.value }); }} /> 
                 <button
                   onClick={() => {
-                    updateTodo(index, task);
+                    updateTodo(id, task);
                     this.editMode(MODE.SHOW);
                   }}
                 >
@@ -97,7 +97,7 @@ class TodoItem extends Component {
 
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   toggleTodo: PropTypes.func,
   updateTodo: PropTypes.func,
   deleteTodo: PropTypes.func,

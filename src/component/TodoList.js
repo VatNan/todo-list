@@ -14,11 +14,11 @@ class TodoList extends Component {
     return (
       <div>
         {
-          todos.map((todo, index) => (
+          todos.map((todo) => (
             <TodoItem
-              key={index}
-              todo={todo}
-              index={index}
+              key={todo.id}
+              todo={todo.data}
+              id={todo.id}
               toggleTodo={toggleTodo}
               updateTodo={updateTodo}
               deleteTodo={deleteTodo}

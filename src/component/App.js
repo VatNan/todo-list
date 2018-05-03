@@ -1,78 +1,73 @@
 import React from 'react';
 import TodoList from './TodoList';
 import CreateTodo from './CreateTodo';
+import firebase from '../config/firebase';
 
 class App extends React.Component {
   state = {
-    todos: [
-      // { task: 'eiei', isComplete: true }
-    ],
+    todos: [],
   };
 
+  componentDidMount() {
+    this.getData();
+  }
+
+  formatTodoFromFirebase = (result) => {
+    return Object.keys(result).map((key) => ({
+      id: key,
+      data: result[key],
+    }));
+  }
+
+  getData = () => {
+    firebase.database().ref('/todos').on('value', (snapshot) => {
+      // subscribe path '/todos'
+      const result = snapshot.val();
+      if (!result) { // not found result
+        this.setState({
+          todos: [],
+        });
+      } else { // found result
+        this.setState({
+          todos: this.formatTodoFromFirebase(result),
+        });
+      }
+    });
+  }
+
   createTodo = (task) => {
-    const { todos } = this.state;
-    const newTodos = [
-      ...todos,
-      { task, isComplete: false },
-    ];
-
-    this.setState({
-      todos: newTodos,
+    firebase.database().ref('/todos').push().set({
+      task,
+      isComplete: false,
     });
   }
 
-  toggleTodo = (indexToggle) => {
-    const { todos } = this.state;
-    const newTodos = todos.map((todo, index) => {
-      // match
-      if (indexToggle === index) {
-        return {
-          ...todo,
-          isComplete: !todo.isComplete,
-        };
-      }
-
-      // not match
-      return  todo;
-    });
-
-    this.setState({
-      todos: newTodos,
-    });
+  toggleTodo = (idToggle) => {
+    const update = {};
+    const oldTodo = this.state
+      .todos
+      .filter(todo => todo.id === idToggle)[0]
+      .data;
+    update[`/todos/${idToggle}`] = { ...oldTodo, isComplete: !oldTodo.isComplete }; 
+    firebase.database().ref().update(update);
   }
 
-  updateTodo = (indexUpdate, newTask) => {
-    const { todos } = this.state;
-    const newTodos = todos.map((todo, index) => {
-      // match
-      if (indexUpdate === index) {
-        return {
-          ...todo,
-          task: newTask,
-        };
-      }
-
-      // not match
-      return  todo;
-    });
-
-    this.setState({
-      todos: newTodos,
-    });
+  updateTodo = (idUpdate, newTask) => {
+    const update = {};
+    const oldTodo = this.state
+      .todos
+      .filter(todo => todo.id === idUpdate)[0]
+      .data;
+    update[`/todos/${idUpdate}`] = { ...oldTodo, task: newTask }; 
+    firebase.database().ref().update(update);
   }
 
-  deleteTodo = (indexDelete) => {
-    const { todos } = this.state;
-    const newTodos = todos.filter((todo, index) => index !== indexDelete);
-
-    this.setState({
-      todos: newTodos,
-    });
+  deleteTodo = (idDelete) => {
+    firebase.database().ref(`/todos/${idDelete}`).remove();
   }
 
   render() {
     const { todos } = this.state;
-  
     return (
       <div>
         <CreateTodo

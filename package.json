@@ -9,8 +9,12 @@
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
     "typography": "^0.16.17",
+    "typography-theme-alton": "^0.15.10",
     "typography-theme-bootstrap": "^0.16.7",
-    "typography-theme-funston": "^0.15.10"
+    "typography-theme-fairy-gates": "^0.15.11",
+    "typography-theme-funston": "^0.15.10",
+    "typography-theme-github": "^0.15.10",
+    "typography-theme-wordpress-2010": "^0.15.10"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom';
 import Typography from 'typography';
 import bootstrapTheme from 'typography-theme-bootstrap';
 // import funstonTheme from 'typography-theme-funston';
+// import altonTheme from 'typography-theme-alton';
+// import fairyGatesTheme from 'typography-theme-fairy-gates';
+// import githubTheme from 'typography-theme-github';
+// import wordpress2010Theme from 'typography-theme-wordpress-2010';
 import App from './component/App';
 
 // typography

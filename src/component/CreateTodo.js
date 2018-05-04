@@ -19,7 +19,6 @@ class CreateTodo extends Component {
           }}
         />
         <button
-          className="create-todo-button"
           onClick={() => {
             createTodo(task);
             // clear text input 

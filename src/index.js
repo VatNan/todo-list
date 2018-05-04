@@ -25,6 +25,19 @@ theme.overrideStyles = () => ({
     borderLeft: '0.25rem solid #eceeef',
       paddingLeft: '1rem',
   },
+  'button': {
+    backgroundColor: '#4CAF50',
+    border: 'none',
+    color: 'white',
+    padding: '4px 10px',
+    textAlign: 'center',
+    textDecoration: 'none',
+    cursor: 'pointer',
+    transitionDuration: '0.4s',
+  },
+  'button:hover': {
+    boxShadow: '0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19)',
+  }
 });
 const typography = new Typography(theme);
 typography.injectStyles(typography)

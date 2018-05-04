@@ -20,20 +20,6 @@
   width: 0px;
 }
 
-.todo-item-button {
-  border: none;
-  color: white;
-  padding: 4px 10px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  transition-duration: 0.4s;
-}
-
-.todo-item-button:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-}
-
 .todo-item-button-edit {
   background-color: #46b8da;
 }

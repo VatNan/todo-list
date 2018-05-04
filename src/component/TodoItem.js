@@ -58,7 +58,7 @@ class TodoItem extends Component {
                 </label>
                 &nbsp;&nbsp;&nbsp;
                 <button
-                  className="todo-item-button todo-item-button-edit"
+                  className="todo-item-button-edit"
                   onClick={() => {
                     this.editMode(MODE.EDIT);
                   }}
@@ -66,7 +66,7 @@ class TodoItem extends Component {
                   Edit
                 </button>
                 <button
-                  className="todo-item-button todo-item-button-delete"
+                  className="todo-item-button-delete"
                   onClick={() => {
                     deleteTodo(id);
                   }}
@@ -82,7 +82,7 @@ class TodoItem extends Component {
                   value={task}
                   onChange={(e) => { this.setState({ task: e.target.value }); }} /> 
                 <button
-                  className="todo-item-button todo-item-button-save"
+                  className="todo-item-button-save"
                   onClick={() => {
                     updateTodo(id, task, todo);
                     this.editMode(MODE.SHOW);
@@ -91,7 +91,7 @@ class TodoItem extends Component {
                   Save
                 </button>
                 <button
-                  className="todo-item-button todo-item-button-cancel"
+                  className="todo-item-button-cancel"
                   onClick={() => {
                     this.editMode(MODE.SHOW);
                     this.setState({ task: this.props.todo.task });

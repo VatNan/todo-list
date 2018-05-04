@@ -8,6 +8,7 @@ import bootstrapTheme from 'typography-theme-bootstrap';
 // import githubTheme from 'typography-theme-github';
 // import wordpress2010Theme from 'typography-theme-wordpress-2010';
 import App from './component/App';
+import 'react-toastify/dist/ReactToastify.css';
 
 // typography
 const theme = bootstrapTheme;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import './styles/TodoItem.css';
 
 const MODE = {
@@ -13,18 +14,25 @@ const COLOR = {
 }
 
 class TodoItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      mode: MODE.SHOW,
-      task: this.props.todo.task,
-    };
-  }
+  state = {
+    mode: MODE.SHOW,
+    task: this.props.todo.task,
+  };
+  inputEditTask = React.createRef();
 
-  editMode = (mode) => {
-    this.setState({
+  editMode = async (mode) => {
+    await this.setState({
       mode,
     });
+    if (mode === MODE.EDIT) {
+      this.inputEditTask.current.focus();
+    }
+  }
+
+  validateTask = () => this.state.task.trim();
+
+  setTast = (task) => {
+    this.setState({ task });
   }
 
   render() {
@@ -78,14 +86,22 @@ class TodoItem extends Component {
             : (
               <div className="todo-item-todo">
                 <input
+                  ref={this.inputEditTask}
                   className="todo-item-task todo-item-task-input"
                   value={task}
-                  onChange={(e) => { this.setState({ task: e.target.value }); }} /> 
+                  onChange={(e) => { this.setTast(e.target.value); }}
+                  placeholder="update todo"
+                /> 
                 <button
                   className="todo-item-button-save"
                   onClick={() => {
-                    updateTodo(id, task, todo);
-                    this.editMode(MODE.SHOW);
+                    if(this.validateTask()) {
+                      updateTodo(id, task.trim(), todo);
+                      this.editMode(MODE.SHOW);
+                    } else {
+                      toast.error("Task is required!");
+                      this.inputEditTask.current.focus();
+                    }
                   }}
                 >
                   Save

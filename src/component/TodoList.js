@@ -1,41 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
+import withLoader from '../hoc/withLoader';
 import './styles/TodoList.css';
 
-class TodoList extends Component {
-  render() {
-    const {
-      todos,
-      toggleTodo,
-      updateTodo,
-      deleteTodo,
-    } = this.props;
-    
-    return (
-      <div className="todo-list-root">
-        {
-          todos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo.data}
-              id={todo.id}
-              toggleTodo={toggleTodo}
-              updateTodo={updateTodo}
-              deleteTodo={deleteTodo}
-            />
-          ))
-        }
-      </div>
-    );
-  }
-}
+const TodoList = ({
+  todos,
+  toggleTodo,
+  updateTodo,
+  deleteTodo,
+}) => 
+(
+  <div className="todo-list-root">
+    {
+      todos.map((todo) => (
+        <TodoItem
+          key={todo.id}
+          todo={todo.data}
+          id={todo.id}
+          toggleTodo={toggleTodo}
+          updateTodo={updateTodo}
+          deleteTodo={deleteTodo}
+        />
+      ))
+    }
+  </div>
+)
+
 
 TodoList.propTypes = {
   todos: PropTypes.array,
   toggleTodo: PropTypes.func,
   updateTodo: PropTypes.func,
   deleteTodo: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 TodoList.defaultProps = {
@@ -43,6 +41,9 @@ TodoList.defaultProps = {
   toggleTodo: () => {},
   updateTodo: () => {},
   deleteTodo: () => {},
+  loading: false,
 };
 
-export default TodoList;
+const TodoListWithLoader = withLoader('loading')(TodoList)
+
+export default TodoListWithLoader;

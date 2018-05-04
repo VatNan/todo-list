@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './styles/CreateTodo.css';
 
 class CreateTodo extends Component {
   state = {
@@ -10,7 +11,7 @@ class CreateTodo extends Component {
     const { task } = this.state;
     const { createTodo } = this.props;
     return (
-      <div>
+      <div className="create-todo-root">
         <input
           value={task}
           onChange={(e) => {
@@ -18,6 +19,7 @@ class CreateTodo extends Component {
           }}
         />
         <button
+          className="create-todo-button"
           onClick={() => {
             createTodo(task);
             // clear text input 

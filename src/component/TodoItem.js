@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './styles/TodoItem.css';
 
 const MODE = {
   EDIT: 'edit',
@@ -7,8 +8,8 @@ const MODE = {
 };
 
 const COLOR = {
-  BLACK: '#000000',
-  GREEN: '#00ff00',
+  GRAY: '#d9d9d9',
+  GREEN: '#4CAF50',
 }
 
 class TodoItem extends Component {
@@ -41,17 +42,23 @@ class TodoItem extends Component {
         {
           (mode === MODE.SHOW)
             ? (
-              <div>
+              <div className="todo-item-todo">
                 <label
+                  className="todo-item-task"
                   onClick={() => {
                     toggleTodo(id);
                   }}
-                  style={{ color: (todo.isComplete) ? COLOR.BLACK : COLOR.GREEN }}
+                  style={{
+                    color: (todo.isComplete) ? COLOR.GRAY : COLOR.GREEN,
+                    textDecoration: (todo.isComplete) ? 'line-through': 'none',
+                    flex: 1,
+                  }}
                 >
                   {todo.task}
                 </label>
                 &nbsp;&nbsp;&nbsp;
                 <button
+                  className="todo-item-button todo-item-button-edit"
                   onClick={() => {
                     this.editMode(MODE.EDIT);
                   }}
@@ -59,6 +66,7 @@ class TodoItem extends Component {
                   Edit
                 </button>
                 <button
+                  className="todo-item-button todo-item-button-delete"
                   onClick={() => {
                     deleteTodo(id);
                   }}
@@ -68,11 +76,13 @@ class TodoItem extends Component {
               </div>
             )
             : (
-              <div>
+              <div className="todo-item-todo">
                 <input
+                  className="todo-item-task todo-item-task-input"
                   value={task}
                   onChange={(e) => { this.setState({ task: e.target.value }); }} /> 
                 <button
+                  className="todo-item-button todo-item-button-save"
                   onClick={() => {
                     updateTodo(id, task);
                     this.editMode(MODE.SHOW);
@@ -81,8 +91,10 @@ class TodoItem extends Component {
                   Save
                 </button>
                 <button
+                  className="todo-item-button todo-item-button-cancel"
                   onClick={() => {
                     this.editMode(MODE.SHOW);
+                    this.setState({ task: this.props.todo.task });
                   }}
                 >
                   Cancel

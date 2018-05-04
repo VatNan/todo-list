@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
+import './styles/TodoList.css';
 
 class TodoList extends Component {
   render() {
@@ -12,7 +13,7 @@ class TodoList extends Component {
     } = this.props;
     
     return (
-      <div>
+      <div className="todo-list-root">
         {
           todos.map((todo) => (
             <TodoItem

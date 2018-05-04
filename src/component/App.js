@@ -1,7 +1,10 @@
 import React from 'react';
 import TodoList from './TodoList';
 import CreateTodo from './CreateTodo';
+import Footer from './Footer';
+import Header from './Header';
 import firebase from '../config/firebase';
+import './styles/App.css'
 
 class App extends React.Component {
   state = {
@@ -69,7 +72,8 @@ class App extends React.Component {
   render() {
     const { todos } = this.state;
     return (
-      <div>
+      <div className="app-root">
+        <Header />
         <CreateTodo
           createTodo={this.createTodo}
         />
@@ -80,6 +84,8 @@ class App extends React.Component {
           updateTodo={this.updateTodo}
           deleteTodo={this.deleteTodo}
         />
+        <br />
+        <Footer />
       </div>
     )
   }

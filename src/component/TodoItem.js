@@ -90,7 +90,7 @@ class TodoItem extends Component {
                   className="todo-item-task todo-item-task-input"
                   value={task}
                   onChange={(e) => { this.setTast(e.target.value); }}
-                  placeholder="update todo"
+                  placeholder=" Key the task..."
                 /> 
                 <button
                   className="todo-item-button-save"

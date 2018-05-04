@@ -30,7 +30,7 @@ class CreateTodo extends Component {
           onChange={(e) => {
             this.setTast(e.target.value);
           }}
-          placeholder="create todo"
+          placeholder=" Key the task..."
         />
         <button
           onClick={() => {

@@ -14,6 +14,9 @@ class Footer extends Component {
               There is one of all in
               {" "}
               <a href="https://github.com/Kzis/React-Course" target="_blank" rel="noopener noreferrer">React Class</a>.
+              View source code
+              {" "}
+              <a href="https://github.com/VatNan/todo-list" target="_blank" rel="noopener noreferrer">Here</a>. 
             </p>
           </blockquote>
         </div>

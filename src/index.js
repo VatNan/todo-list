@@ -6,7 +6,8 @@ import bootstrapTheme from 'typography-theme-bootstrap';
 import App from './component/App';
 
 // typography
-bootstrapTheme.overrideStyles = () => ({
+const theme = bootstrapTheme;
+theme.overrideStyles = () => ({
   'h1,p,label': {
     color: 'white',
   },
@@ -21,7 +22,7 @@ bootstrapTheme.overrideStyles = () => ({
       paddingLeft: '1rem',
   },
 });
-const typography = new Typography(bootstrapTheme);
+const typography = new Typography(theme);
 typography.injectStyles(typography)
 
 ReactDOM.render(

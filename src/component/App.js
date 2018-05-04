@@ -45,22 +45,22 @@ class App extends React.Component {
     });
   }
 
-  toggleTodo = (idToggle) => {
+  toggleTodo = (idToggle, oldTodo) => {
     const update = {};
-    const oldTodo = this.state
-      .todos
-      .filter(todo => todo.id === idToggle)[0]
-      .data;
+    // const oldTodo = this.state
+    //   .todos
+    //   .filter(todo => todo.id === idToggle)[0]
+    //   .data;
     update[`/todos/${idToggle}`] = { ...oldTodo, isComplete: !oldTodo.isComplete }; 
     firebase.database().ref().update(update);
   }
 
-  updateTodo = (idUpdate, newTask) => {
+  updateTodo = (idUpdate, newTask, oldTodo) => {
     const update = {};
-    const oldTodo = this.state
-      .todos
-      .filter(todo => todo.id === idUpdate)[0]
-      .data;
+    // const oldTodo = this.state
+    //   .todos
+    //   .filter(todo => todo.id === idUpdate)[0]
+    //   .data;
     update[`/todos/${idUpdate}`] = { ...oldTodo, task: newTask }; 
     firebase.database().ref().update(update);
   }

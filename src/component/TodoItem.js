@@ -46,7 +46,7 @@ class TodoItem extends Component {
                 <label
                   className="todo-item-task"
                   onClick={() => {
-                    toggleTodo(id);
+                    toggleTodo(id, todo);
                   }}
                   style={{
                     color: (todo.isComplete) ? COLOR.GRAY : COLOR.GREEN,
@@ -84,7 +84,7 @@ class TodoItem extends Component {
                 <button
                   className="todo-item-button todo-item-button-save"
                   onClick={() => {
-                    updateTodo(id, task);
+                    updateTodo(id, task, todo);
                     this.editMode(MODE.SHOW);
                   }}
                 >

@@ -25,7 +25,7 @@ const TodoList = ({
       ))
     }
   </div>
-)
+);
 
 
 TodoList.propTypes = {
@@ -44,6 +44,6 @@ TodoList.defaultProps = {
   loading: false,
 };
 
-const TodoListWithLoader = withLoader('loading')(TodoList)
+const TodoListWithLoader = withLoader('loading')(TodoList);
 
 export default TodoListWithLoader;
